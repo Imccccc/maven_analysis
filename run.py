@@ -49,7 +49,16 @@ def main(arguments):
 
     args = parser.parse_args(arguments)
     logger.info(args)
-    logger.info(get_all_dir_contains_pom(args.path))
+    run_entry(args.path, args.outpath)
+
+
+def run_entry(path, outpath):
+    all_mvn_path = get_all_dir_contains_pom(path)
+    logger.info("found {} projects", len(all_mvn_path))
+    logger.info("projects are {}", all_mvn_path)
+    for curr in all_mvn_path:
+        logger.info("current we are handling {}", curr)
+
 
 
 if __name__ == '__main__':
